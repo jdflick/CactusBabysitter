@@ -1,41 +1,73 @@
-#include <Wire.h>
-#include <DS3231.h>
-#include <LiquidCrystal_I2C.h>
+// Cactus Babysitter
+// Alex McMullen 
+// 10-4-17
+
+// NOTES
+// I think the RGB LED color setting code is out of order
+// it should be (RED, GREEN, BLUE)
+// but it actually goes (BLUE, RED, GREEN) for whatever reason
+// I'm not going to change it at the moment as I am away from my system to test
+
+// OVERALL FUNCTION
+// 1 light fixture that turns on at a specfic hour and off at a specific hour daily
+// 1 pump that turns on weekly
+// 2 RGB LEDs that are based on temperature ranges
+// 4 buttons to change variables (light on time, light off time, milliliters, desired temp)
+
+// COMPONENTS
+// 1 Arduino Uno
+// 1 LCD screen to display variables
+// 1 internal clock to keep time independently
+// 2 relays (light and pump)
+
+// the specific devices I used and wiring strategies will be on my GitHub:
+// github.com/AlexanderTheDecent/CactusBabysitter
+
+// feel free to change the code to fit your needs, this was just for my specific build
+
+//we need these libraries
+  #include <Wire.h>
+  #include <DS3231.h>
+  #include <LiquidCrystal_I2C.h>
 
 //initialize the DS3231 clock using the hardware interface
-DS3231  rtc(SDA, SCL);
+  DS3231  rtc(SDA, SCL);
 
 //set the LCD address to 0x27 for a 20 char and 4 line display
-LiquidCrystal_I2C lcd(0x27, 20, 4);
+  LiquidCrystal_I2C lcd(0x27, 20, 4);
 
 //pin setup
-const int tempLED1RedPin = 3;
-const int tempLED1GreenPin = 5;
-const int tempLED1BluePin = 6;
-const int tempLED2RedPin = 9;
-const int tempLED2GreenPin = 10;
-const int tempLED2BluePin = 11;
-const int relayPin = 7;
-const int pumpPin = 8;
-const int timeOnButtonPin = 13;
-const int timeOffButtonPin = 2;
-const int waterButtonPin = 4;
-const int tempButtonPin = 12;
+//non sequential pin order is due to differences in pin output types
+  const int tempLED1RedPin = 3;
+  const int tempLED1GreenPin = 5;
+  const int tempLED1BluePin = 6;
+  const int tempLED2RedPin = 9;
+  const int tempLED2GreenPin = 10;
+  const int tempLED2BluePin = 11;
+  const int relayPin = 7;
+  const int pumpPin = 8;
+  const int timeOnButtonPin = 13;
+  const int timeOffButtonPin = 2;
+  const int waterButtonPin = 4;
+  const int tempButtonPin = 12;
 
-  //defining variables
-  int lightHourOn = 1;
-  int lightHourOff = 22;
-  boolean lightsOn = false;
+  //defining light variables
+    int lightHourOn = 9; //lights go on at 9am
+    int lightHourOff = 21; //lights go off at 9pm
+    boolean lightsOn = false;
  
-  //these variables don't change with buttons so you may have to change them here.
-  String wateringDay = "Sunday";
-  int wateringHour = 12;
+  //code runs by watering on a given weekday, could be modded to water as often as needed
+  //these variables don't change with buttons so you may have to change them here
+    String wateringDay = "Sunday"; //watering every Sunday
+    int wateringHour = 12; //at noon
   
-  int milliliters = 0;
-  int waterTime = milliliters*500; //this is just desired mL / 6mL/sec flow * 3 pots * 1000ms/sec
-  boolean gaveWater = false;
+  //defining water variables
+    int milliliters = 0;
+    int waterTime = milliliters*500; //this is just desired mL / ~6mL/sec flow * 3 pots * 1000ms/sec
+    boolean gaveWater = false;
   
-  float desiredTemp = 75;
+  //defining temp varaibles
+  float desiredTemp = 75; //optimal plant temp in ºF
   float tempC = 0;
   float tempF = 0;
   
@@ -93,7 +125,7 @@ void loop(){
     String currentDay = rtc.getDOWStr();
     String currentTimeString = rtc.getTimeStr();
     String currentHourString = currentTimeString;
-    currentHourString.remove(2);
+    currentHourString.remove(2); 
     
     //converting hour strings into int
     int currentHour = currentHourString.toInt();
