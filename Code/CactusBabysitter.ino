@@ -2,11 +2,16 @@
 // Alex McMullen 
 // 10-4-17
 
-// NOTES
+// NOTES FOR THOSE IMPLEMENTING THIS CODE THEMSLEVES
 // I think the RGB LED color setting code is out of order
 // it should be (RED, GREEN, BLUE)
 // but it actually goes (BLUE, RED, GREEN) for whatever reason
 // I'm not going to change it at the moment as I am away from my system to test
+
+// also in the code writing to the LCD I have periods after the input
+// that's just for when the words overwrite themselves
+// clearing it every time causes the screen to blink a lot
+// I ran out of time to write a function that controlled overwriting the LCD
 
 // OVERALL FUNCTION
 // 1 light fixture that turns on at a specfic hour and off at a specific hour daily
