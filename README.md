@@ -23,4 +23,4 @@ Arduino-based machine to control lights, give water, and monitor temperatures of
 
 
 
-**** this is just a personal project, if you see/make any improvements please share :]
+**** this is just a personal project, if you see/make any improvements please share :] ****
