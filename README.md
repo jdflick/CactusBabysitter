@@ -1,6 +1,7 @@
 # CactusBabysitter
 Arduino-based machine to control lights, give water, and monitor temperatures of potted plants.
 
+this is just a personal project, if you see/make any improvements please share!
 
 ### OVERVIEW
 • text file with the overall function and general notes
@@ -20,7 +21,3 @@ Arduino-based machine to control lights, give water, and monitor temperatures of
 • my Arduino code including comments explaining how it works
 
 • additional libraries you'll need
-
-
-
-**** this is just a personal project, if you see/make any improvements please share :] ****
