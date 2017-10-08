@@ -1,0 +1,74 @@
+
+WIRING
+This is a basic guide I made on memory, if you have in-depth
+questions feel free to contact me on Github or to look up a
+guide online.
+
+
+OVERALL POWER / LIGHT
+The flourescent light fixture which plugged into the
+wall is the main power source.
+
+Put a switch between the wall and the light to act as a
+killswitch so you can turn the light off if you ever wanted
+it to be off during the scheduled cycle
+
+Wired in a 5v USB adapter with two ports that usually plugs
+into the wall. Now you've got a USB port for the arduino. 
+Make sure this part is not affected by the killswitch. 
+I do not rememember if we ended up using the second slot but 
+it's nice to have in case you start to run out of power options.
+
+You'll also need a relay for the light to be wired in. The
+relay basically holds the power to the light until the arduino
+tells it not to. 
+
+
+CLOCK MODULE
+The clock module should have a battery in it so it can keep time
+on it's own. However you'll still need to power it with 5v from 
+the arduino. Ground it on a breadboard as well.
+
+Once it's powered and grounded, you should plug it into the SDA
+and SCL ports of the arduino (A4 and A5). Do this through a 
+breadboard as well because you'll need to use these ports for the
+LCD screen too.
+
+
+LCD SCREEN
+Power it from the arduino 5v and then hook it up to the SDA/SCL 
+for data transfer. Ground it too, of course.
+
+
+RGB LEDs
+Make sure the power for these is coming from digital pins with
+PWM outputs. In the code I provided, they are connected in that
+manner. If you're not using my code, it should be the pins with
+this mark on them: ~
+
+
+BUTTONS
+This part is pretty in depth and was definitely the hardest part 
+for me. Look up how to wire momentary switches for digital input
+on arduino online because they will explain it better than I can.
+The main idea is you want there to be no current into the arduino
+until you push the button. 
+
+
+PUMP
+I forget exactly how I worked this one but I think I used the 
+5v power from the other USB slot and then hooked that up to a relay
+which I controlled from the arduino. At this point in the project 
+I had started to run out of ways to power things. The power that
+your pump is getting will greatly affect the flow rate, so make
+sure you adjust the code to work with your pump's speed. I measured
+the water that came out over a minute like 5 times and then averaged 
+it out to determine how much water was flowing per second.
+
+
+Sorry if this isn't too helpful of a guide. I may release an actual
+wiring diagram in the future if it's requested.
+
+
+
+
