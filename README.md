@@ -3,6 +3,7 @@ Arduino-based machine to control lights, give water, and monitor temperatures of
 
 ### OVERVIEW
 • text file with the overall function and general notes
+
 • a couple basic pictures
 
 ### PARTS
@@ -13,6 +14,7 @@ Arduino-based machine to control lights, give water, and monitor temperatures of
   
 ### CODE
 • my Arduino code including comments explaining how it works
+
 • additional libraries you'll need
 
 
