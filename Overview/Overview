@@ -1,0 +1,29 @@
+
+MAIN FUNCTIONS
+• turns on/off a flourescent light daily
+• turns on/off a water pump weekly
+• adjusts RGB LEDs based on temperature constantly
+• displays variables to an LCD screen
+• increment those variables based on button pushes
+
+The system I made was to take care of three cactuses. Regardless,
+changing the code/components should allow you to take care of any
+plant you'd really want to as long as you use a flourescent light
+that plants can benefit from.
+
+The parts list included is a bit vague, as I am away from the system
+right now for awhile. The only parts that you'd really need to be 
+identical to mine are the LCD screen and the realtime clock. I've
+provided links to those in the parts list.
+
+The wiring strategy was probably the trickiest part. The main issue
+is getting power to everything. Because I don't have it here to look
+at, the wiring is just a rough idea of how we did it.
+
+The code has comments in it which should help explain it a bit. It
+may not be the most effiecient code, but it worked for my setup so
+I figured I'd post it. The additianal libraries you'll need are also
+in the code folder. 
+
+If you need any help or have any questions I'd be happy to assist you.
+Contact me at Github.com/AlexanderTheDecent
